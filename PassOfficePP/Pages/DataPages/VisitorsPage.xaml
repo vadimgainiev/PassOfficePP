@@ -1,0 +1,271 @@
+﻿<Page x:Class="PassOfficePP.Pages.DataPages.VisitorsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Сотрудники"
+      IsVisibleChanged="VisitorsPage_OnIsVisibleChanged">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="9.0*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="2.5*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.Column="0"
+                   Margin="0,0,0,0"
+                   Height="30">
+            <icon:PackIconMaterial Kind="AccountSearch"
+                                   DockPanel.Dock="Left"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,10,0" />
+            <TextBox x:Name="SearchTextBox"
+                     DockPanel.Dock="Left"
+                     TextChanged="SearchTextBox_OnTextChanged">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="SearchTb" AlignmentX="Left" AlignmentY="Center"
+                                         Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Поиск..." Foreground="Black" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource SearchTb}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource SearchTb}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Width" Value="305" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="5" />
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button x:Name="BtnExportToExcel"
+                    DockPanel.Dock="Right"
+                    Content="Экспорт в Excel"
+                    Style="{StaticResource DataFunctionButton2}"
+                    Click="BtnExportToExcel_Click" />
+        </DockPanel>
+
+        <Button Grid.Row="0" Grid.Column="1"
+                x:Name="CompareBtn"
+                Content="Сравнить списки"
+                Width="150"
+                HorizontalAlignment="Right"
+                Style="{StaticResource DataFunctionButton2}"
+                Click="CompareBtn_OnClick" />
+
+        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  x:Name="VisitorsGrid"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectedCellsChanged="VisitorsGrid_OnSelectedCellsChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Surname}"
+                                    Header="Фамилия"
+                                    Width="*" />
+                <DataGridTextColumn Binding="{Binding Name}"
+                                    Header="Имя"
+                                    Width="*" />
+                <DataGridTextColumn Binding="{Binding Middlename}"
+                                    Header="Отчество"
+                                    Width="*" />
+                <DataGridTemplateColumn MinWidth="10">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnEdit"
+                                    Content="Изменить"
+                                    Style="{StaticResource DataGridFunctionButton}"
+                                    Click="BtnEdit_OnClick" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              x:Name="VisitorProfile"
+              Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0"
+                   x:Name="ProfilePhoto"
+                   Stretch="Uniform"
+                   MinHeight="7.5cm"
+                   MinWidth="6cm"
+                   MaxHeight="9"
+                   MaxWidth="6"
+                   Source="{Binding ElementName=VisitorsGrid, Path=SelectedItem.VisitorImage}">
+            </Image>
+
+            <Grid Grid.Row="1" Margin="25,0,25,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Фамилия:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Имя:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="Отчество:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="Место работы:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Text="Категория:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Text="График работы:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="6"
+                    Text="Должность:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="7"
+                    Text="Уровень доступа:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="8"
+                    Text="Ключ:"
+                    Style="{StaticResource DisplayInfo}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="9"
+                    Text="Дата формирования ключа:"
+                    Style="{StaticResource DisplayInfo}" />
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.Surname}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.Name}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.Middlename}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    HorizontalAlignment="Left"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.WorkPlace.Name_WorkPlace}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.Category.Name_Category}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="5"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.WorkSchedule.Name_WorkSchedule}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="6"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.Post.Name_Post}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="7"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.AccessLevel.AccessLevel_Name}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="8"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.ID_Visitor}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="9"
+                    Text="{Binding ElementName=VisitorsGrid, Path=SelectedItem.CreationDate}"
+                    Style="{StaticResource DisplayInfoDatabase}" />
+            </Grid>
+        </Grid>
+
+        <Button Content="Добавить"
+                Grid.Row="2" Grid.Column="0"
+                HorizontalAlignment="Left"
+                x:Name="BtnAdd"
+                Style="{StaticResource DataFunctionButton}"
+                Click="BtnAdd_OnClick" />
+        <Button Content="Удалить"
+                Grid.Row="2" Grid.Column="0"
+                HorizontalAlignment="Right"
+                x:Name="BtnDelete"
+                Style="{StaticResource DataFunctionButton}"
+                Background="Crimson"
+                Foreground="White"
+                Click="BtnDelete_OnClick" />
+    </Grid>
+</Page>

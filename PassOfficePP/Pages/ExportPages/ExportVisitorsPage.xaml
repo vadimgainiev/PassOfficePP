@@ -1,0 +1,53 @@
+﻿<Page x:Class="PassOfficePP.Pages.ExportPages.ExportVisitorsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:PassOfficePP.Pages.ExportPages"
+      mc:Ignorable="d"
+      Title="Экспорт в документ"
+      WindowTitle="Экспорт в документ"
+      Background="Bisque">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9.0*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                  x:Name="VisitorsGrid"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Surname}"
+                                    Header="Фамилия"
+                                    Width="*" />
+                <DataGridTextColumn Binding="{Binding Name}"
+                                    Header="Имя"
+                                    Width="*" />
+                <DataGridTextColumn Binding="{Binding Middlename}"
+                                    Header="Отчество"
+                                    Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Экспорт"
+                Grid.Row="1" Grid.Column="0"
+                HorizontalAlignment="Left"
+                x:Name="BtnExport"
+                Style="{StaticResource DataFunctionButton}"
+                Click="BtnExport_OnClick" />
+        <Button Content="Отмена"
+                Grid.Row="1" Grid.Column="0"
+                HorizontalAlignment="Right"
+                x:Name="BtnCancel"
+                Style="{StaticResource DataFunctionButton}"
+                Background="Crimson"
+                Foreground="White"
+                Click="BtnCancel_OnClick" />
+    </Grid>
+</Page>

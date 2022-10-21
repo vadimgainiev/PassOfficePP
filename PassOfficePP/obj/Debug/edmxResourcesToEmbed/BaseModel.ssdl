@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PassOfficePPDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessLevel">
+    <Key>
+      <PropertyRef Name="ID_AccessLevel" />
+    </Key>
+    <Property Name="ID_AccessLevel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccessLevel_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="AccessLevel_Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID_Category" />
+    </Key>
+    <Property Name="ID_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="ID_Post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Post" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Visitor">
+    <Key>
+      <PropertyRef Name="ID_Visitor" />
+    </Key>
+    <Property Name="ID_Visitor" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Middlename" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkPlace_ID" Type="int" />
+    <Property Name="WorkSchedule_ID" Type="int" />
+    <Property Name="Category_ID" Type="int" />
+    <Property Name="Post_ID" Type="int" />
+    <Property Name="AccessLevel_ID" Type="int" />
+    <Property Name="VisitorImage" Type="varbinary(max)" />
+    <Property Name="CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkPlace">
+    <Key>
+      <PropertyRef Name="ID_WorkPlace" />
+    </Key>
+    <Property Name="ID_WorkPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_WorkPlace" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkSchedule">
+    <Key>
+      <PropertyRef Name="ID_WorkSchedule" />
+    </Key>
+    <Property Name="ID_WorkSchedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_WorkSchedule" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description_WorkSchedule" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Visitor_AccessLevel">
+    <End Role="AccessLevel" Type="Self.AccessLevel" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="ID_AccessLevel" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="AccessLevel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID_Category" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_WorkPlace">
+    <End Role="WorkPlace" Type="Self.WorkPlace" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkPlace">
+        <PropertyRef Name="ID_WorkPlace" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="WorkPlace_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_WorkSchedule">
+    <End Role="WorkSchedule" Type="Self.WorkSchedule" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSchedule">
+        <PropertyRef Name="ID_WorkSchedule" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="WorkSchedule_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PassOfficePPDBModelContainer">
+    <EntitySet Name="AccessLevel" EntityType="Self.AccessLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkPlace" EntityType="Self.WorkPlace" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkSchedule" EntityType="Self.WorkSchedule" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Visitor_AccessLevel" Association="Self.FK_Visitor_AccessLevel">
+      <End Role="AccessLevel" EntitySet="AccessLevel" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_Category" Association="Self.FK_Visitor_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_Post" Association="Self.FK_Visitor_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_WorkPlace" Association="Self.FK_Visitor_WorkPlace">
+      <End Role="WorkPlace" EntitySet="WorkPlace" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_WorkSchedule" Association="Self.FK_Visitor_WorkSchedule">
+      <End Role="WorkSchedule" EntitySet="WorkSchedule" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,143 @@
+﻿<Window x:Class="PassOfficePP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Title="Бюро пропусков"
+        ResizeMode="CanMinimize"
+        Height="450" Width="800"
+        MouseDown="MainWindow_OnMouseDown"
+        Background="Bisque">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame Grid.Column="1" x:Name="MainFrame"
+               NavigationUIVisibility="Hidden" />
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Panel.ZIndex="1"
+                        Margin="10">
+                <Image Source="../Resources/pass.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="Uniform"
+                       MaxHeight="300"
+                       MaxWidth="200" />
+                <TextBlock Text="Бюро пропусков"
+                           FontWeight="ExtraBold"
+                           FontSize="16"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Border Grid.Row="1">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Bisque" Offset="0" />
+                        <GradientStop Color="Bisque" Offset="0.8" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <StackPanel Grid.Row="1" Margin="20">
+                <TextBlock Text="Навигация"
+                           FontWeight="Heavy"
+                           HorizontalAlignment="Center"
+                           FontSize="16"
+                           Style="{StaticResource DisplayInfo}"
+                           Margin="0,0,0,30" />
+                <Button x:Name="ShowVisitorPage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowVisitorPage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="Account"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Сотрудники"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ShowAccessLevelPage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowAccessLevelPage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="AccessPointCheck"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Уровни доступа"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ShowPostPage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowPostPage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="Post"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Должности"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ShowCategoryPage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowCategoryPage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="Table"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Категории"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ShowWorkPlacePage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowWorkPlacePage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="OfficeBuildingOutline"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Места работы"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ShowWorkSchedulePage"
+                        Style="{StaticResource MenuButton}"
+                        Click="ShowWorkSchedulePage_Click">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                        <icon:PackIconMaterial
+                            Kind="ClipboardTextClockOutline"
+                            Style="{StaticResource MenuButtonIcon}" />
+                        <TextBlock Text="Графики работы"
+                                   Style="{StaticResource MenuButtonText}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

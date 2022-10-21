@@ -1,0 +1,143 @@
+﻿<Page x:Class="PassOfficePP.Pages.AddEditPages.AddEditVisitorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:PassOfficePP.Pages.AddEditPages"
+      mc:Ignorable="d"
+      Title="Новый сотрудник"
+      Height="800" Width="1000"
+      Background="Bisque">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9cm" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <!-- Source="{Binding VisitorImage}" -->
+            <!-- <Image x:Name="ProfilePhoto" -->
+            <!--        Stretch="UniformToFill" -->
+            <!--        MinHeight="7.5cm" -->
+            <!--        MinWidth="6cm" -->
+            <!--        MaxHeight="9" -->
+            <!--        MaxWidth="6" -->
+            <!--        Source="{Binding VisitorImage}" /> -->
+            <Image x:Name="ProfilePhoto"
+                   MinHeight="7.5cm"
+                   MinWidth="6cm"
+                   MaxHeight="9"
+                   MaxWidth="6">
+                <Image.Source>
+                    <Binding Path="VisitorImage" >
+                        <Binding.TargetNullValue>
+                            <ImageSource>../../Resources/Headshots-Placeholder.png</ImageSource>
+                        </Binding.TargetNullValue>
+                    </Binding>
+                </Image.Source>
+            </Image>
+            <Button x:Name="SetImage"
+                    Width="100"
+                    Content="Ввод из файла"
+                    Style="{StaticResource DataFunctionButton}"
+                    Click="SetImage_OnClick" />
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="5,0,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       Text="Фамилия:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="1" Grid.Column="0"
+                       Text="Имя:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       Text="Отчество:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="3" Grid.Column="0"
+                       Text="Место работы:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                       Text="Категория:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="5" Grid.Column="0"
+                       Text="График работы:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="6" Grid.Column="0"
+                       Text="Должность:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+            <TextBlock Grid.Row="7" Grid.Column="0"
+                       Text="Уровень доступа:"
+                       Style="{StaticResource AddEditDisplayInfo1}" />
+
+            <TextBox Grid.Row="0" Grid.Column="1"
+                     Text="{Binding Surname}"
+                     MaxLength="50"
+                     Style="{StaticResource AddEditTextBox1}" />
+            <TextBox Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Name}"
+                     MaxLength="50"
+                     Style="{StaticResource AddEditTextBox1}" />
+            <TextBox Grid.Row="2" Grid.Column="1"
+                     Text="{Binding Middlename}"
+                     MaxLength="50"
+                     Style="{StaticResource AddEditTextBox1}" />
+            <ComboBox Grid.Row="3" Grid.Column="1"
+                      x:Name="WorkPlaceComboBox"
+                      SelectedItem="{Binding WorkPlace}"
+                      DisplayMemberPath="Name_WorkPlace"
+                      Style="{StaticResource AddEditComboBox1}" />
+            <ComboBox Grid.Row="4" Grid.Column="1"
+                      x:Name="CategoryComboBox"
+                      SelectedItem="{Binding Category}"
+                      DisplayMemberPath="Name_Category"
+                      Style="{StaticResource AddEditComboBox1}" />
+            <ComboBox Grid.Row="5" Grid.Column="1"
+                      x:Name="WorkScheduleComboBox"
+                      SelectedItem="{Binding WorkSchedule}"
+                      DisplayMemberPath="Name_WorkSchedule"
+                      Style="{StaticResource AddEditComboBox1}" />
+            <ComboBox Grid.Row="6" Grid.Column="1"
+                      x:Name="PostComboBox"
+                      SelectedItem="{Binding Post}"
+                      DisplayMemberPath="Name_Post"
+                      Style="{StaticResource AddEditComboBox1}" />
+            <ComboBox Grid.Row="7" Grid.Column="1"
+                      x:Name="AccessLevelComboBox"
+                      SelectedItem="{Binding AccessLevel}"
+                      DisplayMemberPath="AccessLevel_Name"
+                      Style="{StaticResource AddEditComboBox1}" />
+        </Grid>
+        <Button Grid.Row="2"
+                x:Name="BtnCancel"
+                Content="Отмена"
+                Background="Crimson"
+                HorizontalAlignment="Left"
+                Foreground="White"
+                Style="{StaticResource DataFunctionButton}"
+                Click="BtnCancel_OnClick" />
+        <Button Grid.Row="2"
+                x:Name="BtnSave"
+                Content="Сохранить"
+                Background="#CCCCFF"
+                HorizontalAlignment="Right"
+                Foreground="Black"
+                Style="{StaticResource DataFunctionButton}"
+                Click="BtnSave_OnClick" />
+    </Grid>
+</Page>

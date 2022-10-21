@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PassOfficePPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccessLevel">
+    <Key>
+      <PropertyRef Name="ID_AccessLevel" />
+    </Key>
+    <Property Name="ID_AccessLevel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccessLevel_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccessLevel_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_AccessLevel" FromRole="AccessLevel" ToRole="Visitor" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID_Category" />
+    </Key>
+    <Property Name="ID_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_Category" FromRole="Category" ToRole="Visitor" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID_Post" />
+    </Key>
+    <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Post" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_Post" FromRole="Post" ToRole="Visitor" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Visitor">
+    <Key>
+      <PropertyRef Name="ID_Visitor" />
+    </Key>
+    <Property Name="ID_Visitor" Type="Guid" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Middlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkPlace_ID" Type="Int32" />
+    <Property Name="WorkSchedule_ID" Type="Int32" />
+    <Property Name="Category_ID" Type="Int32" />
+    <Property Name="Post_ID" Type="Int32" />
+    <Property Name="AccessLevel_ID" Type="Int32" />
+    <Property Name="VisitorImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="AccessLevel" Relationship="Self.FK_Visitor_AccessLevel" FromRole="Visitor" ToRole="AccessLevel" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Visitor_Category" FromRole="Visitor" ToRole="Category" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Visitor_Post" FromRole="Visitor" ToRole="Post" />
+    <NavigationProperty Name="WorkPlace" Relationship="Self.FK_Visitor_WorkPlace" FromRole="Visitor" ToRole="WorkPlace" />
+    <NavigationProperty Name="WorkSchedule" Relationship="Self.FK_Visitor_WorkSchedule" FromRole="Visitor" ToRole="WorkSchedule" />
+  </EntityType>
+  <EntityType Name="WorkPlace">
+    <Key>
+      <PropertyRef Name="ID_WorkPlace" />
+    </Key>
+    <Property Name="ID_WorkPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_WorkPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_WorkPlace" FromRole="WorkPlace" ToRole="Visitor" />
+  </EntityType>
+  <EntityType Name="WorkSchedule">
+    <Key>
+      <PropertyRef Name="ID_WorkSchedule" />
+    </Key>
+    <Property Name="ID_WorkSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_WorkSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description_WorkSchedule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_WorkSchedule" FromRole="WorkSchedule" ToRole="Visitor" />
+  </EntityType>
+  <Association Name="FK_Visitor_AccessLevel">
+    <End Role="AccessLevel" Type="Self.AccessLevel" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="ID_AccessLevel" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="AccessLevel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID_Category" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID_Post" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_WorkPlace">
+    <End Role="WorkPlace" Type="Self.WorkPlace" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkPlace">
+        <PropertyRef Name="ID_WorkPlace" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="WorkPlace_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Visitor_WorkSchedule">
+    <End Role="WorkSchedule" Type="Self.WorkSchedule" Multiplicity="0..1" />
+    <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkSchedule">
+        <PropertyRef Name="ID_WorkSchedule" />
+      </Principal>
+      <Dependent Role="Visitor">
+        <PropertyRef Name="WorkSchedule_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PassOfficePPDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccessLevel" EntityType="Self.AccessLevel" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Visitor" EntityType="Self.Visitor" />
+    <EntitySet Name="WorkPlace" EntityType="Self.WorkPlace" />
+    <EntitySet Name="WorkSchedule" EntityType="Self.WorkSchedule" />
+    <AssociationSet Name="FK_Visitor_AccessLevel" Association="Self.FK_Visitor_AccessLevel">
+      <End Role="AccessLevel" EntitySet="AccessLevel" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_Category" Association="Self.FK_Visitor_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_Post" Association="Self.FK_Visitor_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_WorkPlace" Association="Self.FK_Visitor_WorkPlace">
+      <End Role="WorkPlace" EntitySet="WorkPlace" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Visitor_WorkSchedule" Association="Self.FK_Visitor_WorkSchedule">
+      <End Role="WorkSchedule" EntitySet="WorkSchedule" />
+      <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
