@@ -137,6 +137,11 @@
                                    Style="{StaticResource MenuButtonText}" />
                     </StackPanel>
                 </Button>
+                <Button x:Name="ExitBtn"
+                        Margin="0,200,0,0"
+                        Content="Выйти"
+                        Style="{StaticResource DataFunctionButton2}"
+                        Click="ExitBtn_OnClick" />
             </StackPanel>
         </Grid>
     </Grid>

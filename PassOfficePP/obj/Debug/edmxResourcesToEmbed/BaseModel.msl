@@ -26,6 +26,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="PassOfficePPDBModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+          <ScalarProperty Name="Name_Role" ColumnName="Name_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="PassOfficePPDBModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -34,6 +42,16 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="PassOfficePPDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="Login_User" ColumnName="Login_User" />
+          <ScalarProperty Name="Password_User" ColumnName="Password_User" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

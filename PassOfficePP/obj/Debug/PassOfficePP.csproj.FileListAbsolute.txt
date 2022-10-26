@@ -69,3 +69,5 @@ C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\bin\De
 C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\bin\Debug\PassOfficePP.application
 C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\obj\Debug\PassOfficePP.exe.manifest
 C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\obj\Debug\PassOfficePP.application
+C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\obj\Debug\Windows\LoginWindow.g.cs
+C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\obj\Debug\Windows\LoginWindow.baml

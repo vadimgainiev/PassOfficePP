@@ -25,6 +25,14 @@
     <Property Name="Name_Post" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Visitor" Relationship="Self.FK_Visitor_Post" FromRole="Post" ToRole="Visitor" />
   </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID_Role" />
+    </Key>
+    <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -34,6 +42,16 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
   </EntityType>
   <EntityType Name="Visitor">
     <Key>
@@ -109,6 +127,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID_Role" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Visitor_WorkPlace">
     <End Role="WorkPlace" Type="Self.WorkPlace" Multiplicity="0..1" />
     <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
@@ -137,7 +167,9 @@
     <EntitySet Name="AccessLevel" EntityType="Self.AccessLevel" />
     <EntitySet Name="Category" EntityType="Self.Category" />
     <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
     <EntitySet Name="Visitor" EntityType="Self.Visitor" />
     <EntitySet Name="WorkPlace" EntityType="Self.WorkPlace" />
     <EntitySet Name="WorkSchedule" EntityType="Self.WorkSchedule" />
@@ -152,6 +184,10 @@
     <AssociationSet Name="FK_Visitor_Post" Association="Self.FK_Visitor_Post">
       <End Role="Post" EntitySet="Post" />
       <End Role="Visitor" EntitySet="Visitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_Visitor_WorkPlace" Association="Self.FK_Visitor_WorkPlace">
       <End Role="WorkPlace" EntitySet="WorkPlace" />

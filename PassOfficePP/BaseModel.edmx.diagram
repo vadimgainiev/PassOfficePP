@@ -4,17 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8c900d5c1f9748f2a108b194e327c6fd" Name="Diagram1">
+      <Diagram DiagramId="d978a41603e6496588bba91292240087" Name="Diagram1">
         <EntityTypeShape EntityType="PassOfficePPDBModel.AccessLevel" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PassOfficePPDBModel.Category" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PassOfficePPDBModel.Post" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PassOfficePPDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PassOfficePPDBModel.Role" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PassOfficePPDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PassOfficePPDBModel.User" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PassOfficePPDBModel.Visitor" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PassOfficePPDBModel.WorkPlace" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PassOfficePPDBModel.WorkSchedule" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <AssociationConnector Association="PassOfficePPDBModel.FK_Visitor_AccessLevel" ManuallyRouted="false" />
         <AssociationConnector Association="PassOfficePPDBModel.FK_Visitor_Category" ManuallyRouted="false" />
         <AssociationConnector Association="PassOfficePPDBModel.FK_Visitor_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="PassOfficePPDBModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="PassOfficePPDBModel.FK_Visitor_WorkPlace" ManuallyRouted="false" />
         <AssociationConnector Association="PassOfficePPDBModel.FK_Visitor_WorkSchedule" ManuallyRouted="false" />
       </Diagram>

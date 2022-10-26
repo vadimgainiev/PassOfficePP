@@ -8,9 +8,18 @@ namespace PassOfficePP
 {
     public partial class MainWindow : Window
     {
+        private readonly User _currentUser = new User();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            if (_currentUser.Role_ID == 1) return;
+            ShowCategoryPage.Visibility = Visibility.Hidden;
+            ShowPostPage.Visibility = Visibility.Hidden;
+            ShowAccessLevelPage.Visibility = Visibility.Hidden;
+            ShowWorkPlacePage.Visibility = Visibility.Hidden;
+            ShowWorkSchedulePage.Visibility = Visibility.Hidden;
         }
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -55,6 +64,13 @@ namespace PassOfficePP
         {
             MainFrame.Content = new WorkSchedulePage();
             Title = "Графики работы";
+        }
+
+        private void ExitBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
     }
 }
