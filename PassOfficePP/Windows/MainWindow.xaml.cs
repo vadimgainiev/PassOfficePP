@@ -8,18 +8,26 @@ namespace PassOfficePP
 {
     public partial class MainWindow : Window
     {
-        private readonly User _currentUser = new User();
-
-        public MainWindow()
+        public MainWindow(User currentUser)
         {
             InitializeComponent();
 
-            if (_currentUser.Role_ID == 1) return;
-            ShowCategoryPage.Visibility = Visibility.Hidden;
-            ShowPostPage.Visibility = Visibility.Hidden;
-            ShowAccessLevelPage.Visibility = Visibility.Hidden;
-            ShowWorkPlacePage.Visibility = Visibility.Hidden;
-            ShowWorkSchedulePage.Visibility = Visibility.Hidden;
+            if (currentUser.Role_ID == 1)
+            {
+                ShowCategoryPage.Visibility = Visibility.Visible;
+                ShowPostPage.Visibility = Visibility.Visible;
+                ShowAccessLevelPage.Visibility = Visibility.Visible;
+                ShowWorkPlacePage.Visibility = Visibility.Visible;
+                ShowWorkSchedulePage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ShowCategoryPage.Visibility = Visibility.Hidden;
+                ShowPostPage.Visibility = Visibility.Hidden;
+                ShowAccessLevelPage.Visibility = Visibility.Hidden;
+                ShowWorkPlacePage.Visibility = Visibility.Hidden;
+                ShowWorkSchedulePage.Visibility = Visibility.Hidden;
+            }
         }
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)

@@ -13,7 +13,7 @@ namespace PassOfficePP.Pages.AddEditPages
     {
         private readonly Visitor _currentVisitor = new Visitor();
 
-        public AddEditVisitorPage(Visitor selectedVisitor) //Visitor selectedVisitor
+        public AddEditVisitorPage(Visitor selectedVisitor)
         {
             InitializeComponent();
 

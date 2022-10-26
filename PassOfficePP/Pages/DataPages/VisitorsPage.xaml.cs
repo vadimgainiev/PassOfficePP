@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using PassOfficePP.Pages.AddEditPages;
 using PassOfficePP.Pages.CompareExcelDataPages;
 using PassOfficePP.Pages.ExportPages;
@@ -78,7 +77,7 @@ namespace PassOfficePP.Pages.DataPages
             if (Visibility != Visibility.Visible) return;
             PassOfficePPDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             VisitorsGrid.ItemsSource = PassOfficePPDBEntities.GetContext().Visitor.ToList().OrderBy(p => p.Surname);
-            //VisitorsGrid.SelectedIndex = -1;
+            VisitorsGrid.SelectedIndex = -1;
         }
 
         private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e)

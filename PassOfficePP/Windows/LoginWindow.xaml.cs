@@ -14,13 +14,14 @@ namespace PassOfficePP
 
         private void LoginBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
             var context = new PassOfficePPDBEntities();
+            var user = context.User.FirstOrDefault(p => p.Login_User == LoginTb.Text
+                                                        && p.Password_User == PassPb.Password);
+            
+            var mainWindow = new MainWindow(user);
 
             try
             {
-                var user = context.User.FirstOrDefault(p => p.Login_User == LoginTb.Text
-                                                            && p.Password_User == PassPb.Password);
                 if (user == null)
                 {
                     MessageBox.Show("Такого пользователя не существует!", "Ошибка авторизации",
