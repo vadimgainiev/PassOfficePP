@@ -30,21 +30,29 @@ namespace PassOfficePP.Pages.DataPages
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            var forRemove = WorkScheduleGrid.SelectedItems.Cast<WorkSchedule>().ToList();
-
-            if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
-                    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
-            try
+            if (WorkScheduleGrid.SelectedCells.Count == 0)
             {
-                PassOfficePPDBEntities.GetContext().WorkSchedule.RemoveRange(forRemove);
-                PassOfficePPDBEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация удалена.", "Успешное удаление данных");
-
-                WorkScheduleGrid.ItemsSource = PassOfficePPDBEntities.GetContext().WorkSchedule.ToList();
+                MessageBox.Show("Сначала выберите строку для удаления!", "Внимание!",
+                    MessageBoxButton.OK, MessageBoxImage.Stop);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Ошибка!");
+                var forRemove = WorkScheduleGrid.SelectedItems.Cast<WorkSchedule>().ToList();
+
+                if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                try
+                {
+                    PassOfficePPDBEntities.GetContext().WorkSchedule.RemoveRange(forRemove);
+                    PassOfficePPDBEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Информация удалена.", "Успешное удаление данных");
+
+                    WorkScheduleGrid.ItemsSource = PassOfficePPDBEntities.GetContext().WorkSchedule.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!");
+                }
             }
         }
 

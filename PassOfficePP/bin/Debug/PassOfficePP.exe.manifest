@@ -115,14 +115,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PassOfficePP.exe" size="956944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PassOfficePP.exe" size="957456">
       <assemblyIdentity name="PassOfficePP" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4aRds9SbyjUUmfTP9UJ/q1Ot18ioVK9NPdI6CyUgwWk=</dsig:DigestValue>
+        <dsig:DigestValue>zfxKQc+ekM0DmsV6Taukn6tZg7/3PAx1TUwUNF1aNwk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -29,21 +29,29 @@ namespace PassOfficePP.Pages.DataPages
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            var forRemove = WorkPlaceDataGrid.SelectedItems.Cast<WorkPlace>().ToList();
-
-            if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
-                    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
-            try
+            if (WorkPlaceDataGrid.SelectedCells.Count == 0)
             {
-                PassOfficePPDBEntities.GetContext().WorkPlace.RemoveRange(forRemove);
-                PassOfficePPDBEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация удалена.", "Успешное удаление данных");
-
-                WorkPlaceDataGrid.ItemsSource = PassOfficePPDBEntities.GetContext().WorkPlace.ToList();
+                MessageBox.Show("Сначала выберите строку для удаления!", "Внимание!",
+                    MessageBoxButton.OK, MessageBoxImage.Stop);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Ошибка!");
+                var forRemove = WorkPlaceDataGrid.SelectedItems.Cast<WorkPlace>().ToList();
+
+                if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                try
+                {
+                    PassOfficePPDBEntities.GetContext().WorkPlace.RemoveRange(forRemove);
+                    PassOfficePPDBEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Информация удалена.", "Успешное удаление данных");
+
+                    WorkPlaceDataGrid.ItemsSource = PassOfficePPDBEntities.GetContext().WorkPlace.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!");
+                }
             }
         }
 

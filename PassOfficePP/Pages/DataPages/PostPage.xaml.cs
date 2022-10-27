@@ -27,21 +27,29 @@ namespace PassOfficePP.Pages.DataPages
 
         private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
         {
-            var forRemove = PostDataGrid.SelectedItems.Cast<Post>().ToList();
-
-            if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
-                    MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
-            try
+            if (PostDataGrid.SelectedCells.Count == 0)
             {
-                PassOfficePPDBEntities.GetContext().Post.RemoveRange(forRemove);
-                PassOfficePPDBEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация удалена.", "Успешное удаление данных");
-
-                PostDataGrid.ItemsSource = PassOfficePPDBEntities.GetContext().Post.ToList();
+                MessageBox.Show("Сначала выберите строку для удаления!", "Внимание!",
+                    MessageBoxButton.OK, MessageBoxImage.Stop);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Ошибка!");
+                var forRemove = PostDataGrid.SelectedItems.Cast<Post>().ToList();
+
+                if (MessageBox.Show("Вы точно хотите удалить следующую запись?", "Внимание!",
+                        MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                try
+                {
+                    PassOfficePPDBEntities.GetContext().Post.RemoveRange(forRemove);
+                    PassOfficePPDBEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Информация удалена.", "Успешное удаление данных");
+
+                    PostDataGrid.ItemsSource = PassOfficePPDBEntities.GetContext().Post.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка!");
+                }
             }
         }
 

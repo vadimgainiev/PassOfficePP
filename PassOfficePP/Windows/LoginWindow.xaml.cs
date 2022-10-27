@@ -17,7 +17,6 @@ namespace PassOfficePP
             var context = new PassOfficePPDBEntities();
             var user = context.User.FirstOrDefault(p => p.Login_User == LoginTb.Text
                                                         && p.Password_User == PassPb.Password);
-            
             var mainWindow = new MainWindow(user);
 
             try

@@ -12,21 +12,28 @@ namespace PassOfficePP
         {
             InitializeComponent();
 
-            if (currentUser.Role_ID == 1)
+            if (currentUser == null)
             {
-                ShowCategoryPage.Visibility = Visibility.Visible;
-                ShowPostPage.Visibility = Visibility.Visible;
-                ShowAccessLevelPage.Visibility = Visibility.Visible;
-                ShowWorkPlacePage.Visibility = Visibility.Visible;
-                ShowWorkSchedulePage.Visibility = Visibility.Visible;
+                Close();
             }
             else
             {
-                ShowCategoryPage.Visibility = Visibility.Hidden;
-                ShowPostPage.Visibility = Visibility.Hidden;
-                ShowAccessLevelPage.Visibility = Visibility.Hidden;
-                ShowWorkPlacePage.Visibility = Visibility.Hidden;
-                ShowWorkSchedulePage.Visibility = Visibility.Hidden;
+                if (currentUser.Role_ID == 1)
+                {
+                    ShowCategoryPage.Visibility = Visibility.Visible;
+                    ShowPostPage.Visibility = Visibility.Visible;
+                    ShowAccessLevelPage.Visibility = Visibility.Visible;
+                    ShowWorkPlacePage.Visibility = Visibility.Visible;
+                    ShowWorkSchedulePage.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ShowCategoryPage.Visibility = Visibility.Hidden;
+                    ShowPostPage.Visibility = Visibility.Hidden;
+                    ShowAccessLevelPage.Visibility = Visibility.Hidden;
+                    ShowWorkPlacePage.Visibility = Visibility.Hidden;
+                    ShowWorkSchedulePage.Visibility = Visibility.Hidden;
+                }
             }
         }
 
