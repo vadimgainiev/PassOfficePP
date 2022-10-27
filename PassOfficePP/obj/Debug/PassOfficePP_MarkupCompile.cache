@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\App.xaml
-21-1069177048
+20-948774665
 2-967514586
-35-693198853
+34-2138698607
 25-1577643296
-Pages\AddEditPages\AddEditAccessLevelPage.xaml;Pages\AddEditPages\AddEditCategoryPage.xaml;Pages\AddEditPages\AddEditPostPage.xaml;Pages\AddEditPages\AddEditVisitorPage.xaml;Pages\AddEditPages\AddEditWorkPlacePage.xaml;Pages\AddEditPages\AddEditWorkSchedulePage.xaml;Pages\AddEditPages\EditVisitorPage.xaml;Pages\CompareExcelDataPages\CompareVisitorsExcelDataPage.xaml;Pages\DataPages\AccessLevelPage.xaml;Pages\DataPages\CategoryPage.xaml;Pages\DataPages\PostPage.xaml;Pages\DataPages\VisitorsPage.xaml;Pages\DataPages\WorkPlacePage.xaml;Pages\DataPages\WorkSchedulePage.xaml;Pages\ExportPages\ExportVisitorsPage.xaml;Styles\DataGridIcons.xaml;Styles\DataGridStyle.xaml;Styles\MainStyle.xaml;Windows\AddEditWindows\AddEditVisitorWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;
+Pages\AddEditPages\AddEditAccessLevelPage.xaml;Pages\AddEditPages\AddEditCategoryPage.xaml;Pages\AddEditPages\AddEditPostPage.xaml;Pages\AddEditPages\AddEditVisitorPage.xaml;Pages\AddEditPages\AddEditWorkPlacePage.xaml;Pages\AddEditPages\AddEditWorkSchedulePage.xaml;Pages\CompareExcelDataPages\CompareVisitorsExcelDataPage.xaml;Pages\DataPages\AccessLevelPage.xaml;Pages\DataPages\CategoryPage.xaml;Pages\DataPages\PostPage.xaml;Pages\DataPages\VisitorsPage.xaml;Pages\DataPages\WorkPlacePage.xaml;Pages\DataPages\WorkSchedulePage.xaml;Pages\ExportPages\ExportVisitorsPage.xaml;Styles\DataGridIcons.xaml;Styles\DataGridStyle.xaml;Styles\MainStyle.xaml;Windows\AddEditWindows\AddEditVisitorWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;
 
-False
+True
 

@@ -147,9 +147,6 @@
     <Compile Include="Pages\AddEditPages\AddEditWorkSchedulePage.xaml.cs">
       <DependentUpon>AddEditWorkSchedulePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddEditPages\EditVisitorPage.xaml.cs">
-      <DependentUpon>EditVisitorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\CompareExcelDataPages\CompareVisitorsExcelDataPage.xaml.cs">
       <DependentUpon>CompareVisitorsExcelDataPage.xaml</DependentUpon>
     </Compile>
@@ -208,10 +205,6 @@
     <Page Include="Pages\AddEditPages\AddEditVisitorPage.xaml" />
     <Page Include="Pages\AddEditPages\AddEditWorkPlacePage.xaml" />
     <Page Include="Pages\AddEditPages\AddEditWorkSchedulePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\AddEditPages\EditVisitorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
