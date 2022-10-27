@@ -1,0 +1,20 @@
+﻿PassOfficePP
+
+
+winexe
+C#
+.cs
+C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\obj\Debug\
+PassOfficePP
+none
+false
+DEBUG;TRACE
+C:\Users\Вадим Гайниев\source\repos\PassOfficePP\PassOfficePP\App.xaml
+212049514488
+2-1161474625
+361953068648
+25803585213
+Pages\AddEditPages\AddEditAccessLevelPage.xaml;Pages\AddEditPages\AddEditCategoryPage.xaml;Pages\AddEditPages\AddEditPostPage.xaml;Pages\AddEditPages\AddEditVisitorPage.xaml;Pages\AddEditPages\AddEditWorkPlacePage.xaml;Pages\AddEditPages\AddEditWorkSchedulePage.xaml;Pages\AddEditPages\EditVisitorPage.xaml;Pages\CompareExcelDataPages\CompareVisitorsExcelDataPage.xaml;Pages\DataPages\AccessLevelPage.xaml;Pages\DataPages\CategoryPage.xaml;Pages\DataPages\PostPage.xaml;Pages\DataPages\VisitorsPage.xaml;Pages\DataPages\WorkPlacePage.xaml;Pages\DataPages\WorkSchedulePage.xaml;Pages\ExportPages\ExportVisitorsPage.xaml;Styles\DataGridIcons.xaml;Styles\DataGridStyle.xaml;Styles\MainStyle.xaml;Windows\AddEditWindows\AddEditVisitorWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;
+
+True
+
